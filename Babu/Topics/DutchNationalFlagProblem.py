@@ -16,7 +16,6 @@ def DNF(arr):
         else:
             mid += 1
 
-        
 
 DNF(arr)
 
