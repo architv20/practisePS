@@ -147,11 +147,55 @@ matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]
 
 #setAll0sAsRowsAndColumns(matrix,3,4)
 
-setAll0sColsAndRows(matrix, 3,4)
+#setAll0sColsAndRows(matrix, 3,4)
+
+#print(matrix)
+
+
+#Optimal Solution --> In the previous approach the issue was with the Space Complexity for usign external Arrays for rows and cols
+
+#Idea for the optimal solution is to 1st row and 1st columns as the arrays and update the values during 1st traversal
+#for the 1st a[0][0], use an external variable to save value as col1:
+#While iterating for the first time exclude 1st row and 1st column
+#Once the updates are done the move on the next traversal:
+    #Start updating the values from the inner matrix which exculdes 1st row and 1st col
+    #Then start with 1st Row and lastly address 1st column
+
+
+def OptimalSolution(a, m ,n):
+    col0 = -1
+    for i in range(m):
+        for j in range(n):
+            if a[i][j] == 0:
+                    a[i][0] = 0
+                    
+                    if j!= 0:
+                        a[0][j] = 0
+                    else:
+                         col0 = 0
+    
+                 
+    for i in range(1,m):
+         for j in range(1,n):
+            if a[i][0] == 0 or a[0][j] == 0:
+                a[i][j] = 0
+
+    if a[0][0] == 0:
+         for j in range(m):
+              a[0][j] = 0
+    if col0 ==0:
+         for i in range(m):
+              a[i][0]=0
+     
+
+        
+
+OptimalSolution(matrix, 3,4)
 print(matrix)
 
 
-
+#time Compllextity: O(n*m) + O(n*m) + O(n) + O(n)
+#Space Complexity: o(1)
 
 
 
