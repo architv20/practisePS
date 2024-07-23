@@ -247,6 +247,68 @@ print(a)
 
 
         
+def _returnIndex(arr,val,s,e):
+    if len(arr) ==1:
+         if arr[0] == val:
+            return True
+         else:
+              False
+    else:
+         
+         m = (s+e)//2
+         if arr[m] == val:
+              return True
+         else:
+              
+              return _returnIndex(arr, val, s, m-1)
 
-          
+                     
 
+
+def returnIndex(arr, val):
+     return _returnIndex(arr,val, 0, len(arr)-1)     
+
+
+a = [2,4,6,7,8,9,11,44,66]
+print(returnIndex(a,6))
+
+
+
+def threeSum(arr):
+    arr.sort()
+    resultSet = []
+    for i in range(len(a)-3):
+        if a[i] > 0:
+            break
+        if i > 0 and a[i] == a[i-1]:
+            continue
+        start = i 
+        end = len(a) - 1
+        temp = i + 1
+
+
+        while temp <= end:
+            hs = a[start] + a[temp] + a[end]
+
+            if hs == 0:
+                if start != end != temp:
+
+                    resultSet.append([a[start],a[temp],a[end]])
+                    if a[temp] == a[temp+1]:
+                        continue
+                    else:
+                        temp += 1
+                    if a[end] == a[end-1]:
+                        continue
+                    else:
+                        end -= 1
+                        
+            elif hs > 0:
+                temp += 1
+            else:
+                end -= 1
+    return resultSet
+
+a = [-1,0,1,2,-1,-4]
+
+print(threeSum(a))
