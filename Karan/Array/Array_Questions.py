@@ -175,27 +175,78 @@ def OptimalSolution(a, m ,n):
                          col0 = 0
     
                  
-    for i in range(1,m):
-         for j in range(1,n):
-            if a[i][0] == 0 or a[0][j] == 0:
-                a[i][j] = 0
+#     for i in range(1,m):
+#          for j in range(1,n):
+#             if a[i][0] == 0 or a[0][j] == 0:
+#                 a[i][j] = 0
 
-    if a[0][0] == 0:
-         for j in range(m):
-              a[0][j] = 0
-    if col0 ==0:
-         for i in range(m):
-              a[i][0]=0
+#     if a[0][0] == 0:
+#          for j in range(m):
+#               a[0][j] = 0
+#     if col0 ==0:
+#          for i in range(m):
+#               a[i][0]=0
      
 
         
 
-OptimalSolution(matrix, 3,4)
-print(matrix)
+# # OptimalSolution(matrix, 3,4)
+# # print(matrix)
 
 
 #time Compllextity: O(n*m) + O(n*m) + O(n) + O(n)
 #Space Complexity: o(1)
 
+def secondLargest(a):
+    l1 = a[0]
+    l2 = a[1]
 
+    for i in range(2, len(a)):
+        if a[i] == l1 or a[i] == l2:
+            continue
+        elif a[i] > l1:
+             l2 = l1
+             l1 = a[i]
+        elif a[i] > l2:
+             l2 = a[i]
+        
+        print(l1,l2)     
+        
+# a = [4,5,3,45,444,2,2,444,2,1]
+
+# secondLargest(a)
+
+
+#Remove in place duplicates from sorted Array
+
+def removeDup(a):
+     i  = 1
+     c = 0
+     while i < len(a):
+        if a[i] == a[i-1]:
+            a.pop(i)
+            c +=1
+        else:
+             i+=1
+        return c
+
+
+def removeDupOpt(a):
+    i = 0
+    for j in range(1,len(a)):
+         if a[i] != a[j]:
+              a[i+1] = a[j]
+              i += 1
+    
+    return i + 1
+
+a = [1,1,2,2,3,3,3]
+
+print(removeDupOpt(a))
+print(a)
+
+
+        
+
+          
 
